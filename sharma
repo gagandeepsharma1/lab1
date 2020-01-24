@@ -1,0 +1,159 @@
+log.js
+var log = {
+    info: function (info) {
+    console.log('Info: ' + info);
+    },
+    warning:function (warning) {
+    console.log('Warning: ' + warning);
+    },
+    error:function (error) {
+    console.log('Error: ' + error);
+    }
+    };
+ 
+    module.exports.log = function (msg) {
+        console.log(msg);
+       };
+
+       module.exports = function (msg) {
+        console.log(msg);
+       };
+
+package.json
+{
+    "name" : "log",
+    "main" : "./log.js"
+   }
+
+   {
+    "name": "NodejsConsoleApp",
+    "version": "0.0.0",
+    "description": "NodejsConsoleApp",
+    "main": "app.js",
+    "author": {
+    "name": "Dev",
+    "email": ""
+    },
+    "dependencies": {
+    "express": "^4.13.3"
+    }
+   }
+
+server.js
+var http = require('http'); // 1 - Import Node.js core module
+var server = http.createServer(function (req, res) { // 2 - creating server
+ //handle incomming requests here..
+});
+server.listen(5000); //3 - listen for any incoming requests
+console.log('Node.js web server at port 5000 is running..')
+
+var http = require('http'); // Import Node.js core module
+var server = http.createServer(function (req, res) { //create web server
+ if (req.url == '/') { //check the URL of the current request
+
+ // set response header
+ res.writeHead(200, { 'Content-Type': 'text/html' });
+
+ // set response content
+ res.write('<html><body><p>This is home Page.</p></body></html>');
+ res.end();
+
+ }
+ else if (req.url == "/student") {
+
+ res.writeHead(200, { 'Content-Type': 'text/html' });
+ res.write('<html><body><p>This is student Page.</p></body></html>');
+ res.end();
+
+ }
+ else if (req.url == "/admin") {
+
+ res.writeHead(200, { 'Content-Type': 'text/html' });
+ res.write('<html><body><p>This is admin Page.</p></body></html>');
+ res.end();
+
+ }
+ else
+ res.end('Invalid Request!');
+});
+server.listen(5000); //6 - listen for any incoming requests
+console.log('Node.js web server at port 5000 is running..')
+
+var http = require('http');
+var server = http.createServer(function (req, res) {
+
+ if (req.url == '/data') { //check the URL of the current request
+ res.writeHead(200, { 'Content-Type': 'application/json' });
+ res.write(JSON.stringify({ message: "Hello World"}));
+ res.end();
+ }
+});
+server.listen(5000);
+console.log('Node.js web server at port 5000 is running..')
+
+person.js
+module.exports = function (firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullName = function () {
+    return this.firstName + ' ' + this.lastName;
+    }
+   }
+   
+
+app.js
+var myLogModule = require('./Log.js');
+myLogModule.info('Node.js started');
+
+var msg = require('./Messages.js');
+console.log(msg);
+
+var msg = require('./Messages.js');
+console.log(msg.SimpleMessage);
+
+var msg = require('./Log.js');
+msg.log('Hello World');
+
+var person = require('./data.js');
+console.log(person.firstName + ' ' + person.lastName);
+
+var person = require('./Person.js');
+var person1 = new person('James', 'Bond');
+console.log(person1.fullName());
+
+var log = require('./utility/log.js');
+
+var log = require('./utility');
+
+var fs = require('fs');
+fs.readFile('test.txt', 'utf8', function (err, data) {
+
+ debugger;
+ if (err) throw err;
+
+ console.log(data);
+});
+
+var fs = require('fs');
+fs.readFile('test.txt', 'utf8', function (err, data) {
+
+ debugger;
+ if (err) throw err;
+
+ console.log(data);
+});
+
+data.js
+module.exports = {
+    firstName: 'James',
+    lastName: 'Bond'
+   }
+
+message.js
+module.exports = 'Hello world';
+
+exports = 'Hello world';
+
+exports.SimpleMessage = 'Hello world';
+
+module.exports.SimpleMessage = 'Hello world';
